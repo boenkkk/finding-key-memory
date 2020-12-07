@@ -704,7 +704,7 @@ Aplikasi `encAES` akan melakukan load secret key dari key file dan melakukan pro
 
 Untuk mencari AES secret key pada dump file dapat menggunakan program `aeskeyfind`. Untuk bisa menggunakan `aeskeyfind` dapat menggunakan 2 cara, yaitu install dengan command berikut:
 ```
-$ sudo apt installaeskeyfind 
+$ sudo apt install aeskeyfind 
 ```
 Atau compile dari source code `aeskeyfind` dengan cara sebagai berikut. Pada Linux, buka folder `aeskeyfind`.
 ```
