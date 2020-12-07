@@ -1,0 +1,36 @@
+Notes:
+
++------------------------------------------+
+| Install gcore, aeskeyfind and rsakeyfind |
++------------------------------------------+
+sudo apt install gdb aeskeyfind rsakeyfind 
+
+
++----------------+
+| Reference code |
++----------------+
+AESKeyFinder dan RSAKeyFinder: 
+https://citp.princeton.edu/our-work/memory/code
+
+AES Finder: 
+https://github.com/mmozeiko/aes-finder
+
+
++-----------------+
+| OpenSSL command |
++-----------------+
+Convert RSA key from p12 to pem format:
+openssl pkcs12 -in keystore.p12 -out keystore.pem
+
+Check RSA key information in pem format:
+openssl rsa -inform DER -check -text -in keystore.pem
+
+Decrypt AES 128 CBC:
+echo [CipherText_hex] | xxd -p -r | openssl enc -d -aes-128-cbc -nopad -K [key_hex] -iv [initialVector_hex] | xxd
+Sample:
+echo C9792E0E757F869CCA306BD3CBA1C62B | xxd -p -r | openssl enc -d -aes-128-cbc -nopad -K 6368616e676520746869732070617373 -iv 73C86D43A9D700A253A96C85B0F6B03A | xxd
+
+Decrypt AES 256 ECB:
+echo [ciphertext] | xxd -p -r | openssl enc -d -aes-256-ecb -K [key] | xxd
+Sample:
+echo 0906B5FD65675E84296A2EF957E50BC3B58E0B9E56416579419688690D0789B8 | xxd -p -r | openssl enc -d -aes-256-ecb -K c23a9ea685521278c5ba5af4e3820b9cd08acb0d22256e3d8a893b10a02122e2 | xxd
